@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dcs7qv746thju"]
+
+[node name="XrLearnCodeDirectionalLightDropMe" type="Node3D" unique_id=1844047824]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1946070784]
+transform = Transform3D(0.77720094, 0.34280765, -0.5276758, 7.3226243e-09, 0.8385756, 0.54478544, 0.6292527, -0.42340773, 0.6517417, 0, 2.6721077, 0)

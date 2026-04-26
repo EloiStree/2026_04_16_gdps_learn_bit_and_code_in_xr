@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cfs70kbc43mfw"]
+
+[ext_resource type="Script" uid="uid://bss70ikgoeo1k" path="res://addons/2026_04_26_gdp_basic_godot_xr/script/core/xr_basic_setup_open_xr.gd" id="1_025ec"]
+[ext_resource type="Script" uid="uid://ca5bynmx5kpgk" path="res://addons/2026_04_26_gdp_basic_godot_xr/script/follow/xr_basic_what_to_follow_singleton_tag.gd" id="1_sist3"]
+[ext_resource type="Script" uid="uid://8ifmhtxijro" path="res://addons/2026_04_26_gdp_basic_godot_xr/script/input/xr_basic_controllers_singleton.gd" id="3_h23gd"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_c4cot"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c4cot"]
+
+[node name="XROriginLearnCodeDropMe" type="Node3D" unique_id=145752958]
+
+[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=1489295315]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=1613233142]
+
+[node name="XrBasicWhatToFollowSingletonTag" type="Node" parent="XROrigin3D/XRCamera3D" unique_id=1850481384 node_paths=PackedStringArray("reference_node", "origin_node")]
+script = ExtResource("1_sist3")
+unique_name_tag = "XR_HEAD"
+reference_node = NodePath("..")
+origin_node = NodePath("../..")
+metadata/_custom_type_script = "uid://ca5bynmx5kpgk"
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D" unique_id=567467482]
+tracker = &"left_hand"
+
+[node name="XrBasicWhatToFollowSingletonTag" type="Node" parent="XROrigin3D/LeftHand" unique_id=2126996535 node_paths=PackedStringArray("reference_node", "origin_node")]
+script = ExtResource("1_sist3")
+unique_name_tag = "XR_LEFT_HAND"
+reference_node = NodePath("..")
+origin_node = NodePath("../..")
+metadata/_custom_type_script = "uid://ca5bynmx5kpgk"
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D" unique_id=1970437407]
+tracker = &"right_hand"
+
+[node name="XrBasicWhatToFollowSingletonTag" type="Node" parent="XROrigin3D/RightHand" unique_id=1671759709 node_paths=PackedStringArray("reference_node", "origin_node")]
+script = ExtResource("1_sist3")
+unique_name_tag = "XR_RIGHT_HAND"
+reference_node = NodePath("..")
+origin_node = NodePath("../..")
+metadata/_custom_type_script = "uid://ca5bynmx5kpgk"
+
+[node name="Head" type="XRController3D" parent="XROrigin3D" unique_id=1533757104]
+tracker = &"head"
+
+[node name="Ground" type="Node3D" parent="." unique_id=2061491173]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground" unique_id=96411028]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D" unique_id=1697806243]
+shape = SubResource("WorldBoundaryShape3D_c4cot")
+
+[node name="CheckCube1x1" type="MeshInstance3D" parent="Ground" unique_id=1596378926]
+transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_c4cot")
+
+[node name="XrBasicSetupOpenXR" type="Node" parent="." unique_id=1727081014]
+script = ExtResource("1_025ec")
+metadata/_custom_type_script = "uid://bss70ikgoeo1k"
+
+[node name="XrBasicControllersSingleton" type="Node" parent="." unique_id=1289443916 node_paths=PackedStringArray("head_controller", "left_controller", "right_controller")]
+script = ExtResource("3_h23gd")
+head_controller = NodePath("../XROrigin3D/Head")
+left_controller = NodePath("../XROrigin3D/LeftHand")
+right_controller = NodePath("../XROrigin3D/RightHand")
+metadata/_custom_type_script = "uid://8ifmhtxijro"
