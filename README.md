@@ -7,3 +7,7 @@ git submodule add https://github.com/EloiStree/2026_04_16_gdps_learn_bit_and_cod
 
 See https://github.com/EloiStree/2026_04_16_gdps_learn_bit_and_code for not XR interaction learning.
 
+
+Require same dependence that https://github.com/EloiStree/2026_04_16_gdps_learn_bit_and_code 
+With addition of:
+- https://github.com/EloiStree/2026_04_26_gdp_basic_godot_xr 
